@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 import plotly.express as px 
 
 def load_data():
-    df=pd.read_csv('data\df.csv')
+    df=pd.read_csv('./data/df.csv') 
     return df
 
 def main():
@@ -24,7 +24,7 @@ def main():
     fig.add_trace(
         go.Bar(x=target.index,y=target,
                 marker={'color':colors,
-                   'line':{'color':'black','width':2},
+                   'line':{'color':'black','width':3},
                    'pattern':{'shape':'/'}})
     )
 
@@ -44,7 +44,7 @@ def main():
     fig.add_trace(
         go.Bar(x=target.index,y=target,
             marker={'color':px.colors.qualitative.Dark24,
-                   'line':{'color':'black','width':2},
+                   'line':{'color':'black','width':3},
                    'pattern':{'shape':'/'}})
     )
 
