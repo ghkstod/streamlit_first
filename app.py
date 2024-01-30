@@ -25,16 +25,35 @@ def main():
                 marker={'color':colors,
                    'line':{'color':'black','width':2},
                    'pattern':{'shape':'/'}})
-)
+    )
 
     fig.update_layout(go.Layout(title={'text':'Frequency of Orders by Days of Week',
-                                  'font':{'color':'blue','size':40}},
+                                  'font':{'color':'blue','size':30}},
                             xaxis={'title':{'text':'Days of Week'},
                                    'gridwidth':1,'showgrid':True},
                             yaxis={'title':{'text':'Frequency'},
                                    'gridwidth':1,'showgrid':True},
 
-))
+    ))
+    st.plotly_chart(fig,use_container_width=True)
+    
+    fig=go.Figure()
+    fig.add_trace(
+        go.Bar(x=df.order_hour_of_day.value_counts().index,y=df.order_hour_of_day.value_counts(),
+            marker={'color':px.colors.qualitative.Dark24,
+                   'line':{'color':'black','width':2},
+                   'pattern':{'shape':'/'}})
+    )
+
+    fig.update_layout(go.Layout(title={'text':'Frequency of Orders by Hour of Day',
+                                  'font':{'color':'blue','size':30}},
+                            xaxis={'title':{'text':'Hour_of_Day'},
+                                   'gridwidth':1,'showgrid':True},
+                            yaxis={'title':{'text':'Frequency'},
+                                   'gridwidth':1,'showgrid':True},
+                            margin=dict(l=23,r=23,b=23)
+
+    ))
     st.plotly_chart(fig,use_container_width=True)
     
     
