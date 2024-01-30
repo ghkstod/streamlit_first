@@ -18,10 +18,11 @@ def main():
     #st.dataframe(df)
     
     #Frequency of Orders by Days of week
-    colors=sns.color_palette('hls',len(df.order_dow.value_counts().index)).as_hex()
+    target=df.order_dow.value_counts()
+    colors=sns.color_palette('hls',len(target.index)).as_hex()
     fig=go.Figure()
     fig.add_trace(
-        go.Bar(x=df.order_dow.value_counts().index,y=df.order_dow.value_counts(),
+        go.Bar(x=target.index,y=target,
                 marker={'color':colors,
                    'line':{'color':'black','width':2},
                    'pattern':{'shape':'/'}})
@@ -37,9 +38,11 @@ def main():
     ))
     st.plotly_chart(fig,use_container_width=True)
     
+    #Frequency of Orders by Hour of Day
+    target=df.order_hour_of_day.value_counts()
     fig=go.Figure()
     fig.add_trace(
-        go.Bar(x=df.order_hour_of_day.value_counts().index,y=df.order_hour_of_day.value_counts(),
+        go.Bar(x=target.index,y=target,
             marker={'color':px.colors.qualitative.Dark24,
                    'line':{'color':'black','width':2},
                    'pattern':{'shape':'/'}})
@@ -55,11 +58,8 @@ def main():
 
     ))
     st.plotly_chart(fig,use_container_width=True)
-    
-    
-    
-    
-    
+      
+      
 if __name__ == '__main__':
     main()
     
