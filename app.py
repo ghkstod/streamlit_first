@@ -40,6 +40,7 @@ def main():
 
         ))
         st.plotly_chart(fig,use_container_width=True)
+        
     with tab2:
         #Frequency of Orders by Hour of Day
         target=df.order_hour_of_day.value_counts()
